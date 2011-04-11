@@ -8,8 +8,8 @@
     <ProjectGuid>{4B937C8D-056F-4D77-966F-D5B1B44E7E3C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NinjectPrismExt</RootNamespace>
-    <AssemblyName>NinjectPrismExt</AssemblyName>
+    <RootNamespace>Prism.NinjectExtension</RootNamespace>
+    <AssemblyName>Prism.NinjectExtension</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

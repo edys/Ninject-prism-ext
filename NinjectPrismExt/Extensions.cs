@@ -4,9 +4,9 @@ using System.Globalization;
 using Microsoft.Practices.Prism.Logging;
 using Ninject;
 using Ninject.Parameters;
-using NinjectPrismExt.Properties;
+using Prism.NinjectExtension.Properties;
 
-namespace NinjectPrismExt
+namespace Prism.NinjectExtension
 {
     public static  class  KernelExtensions
     {

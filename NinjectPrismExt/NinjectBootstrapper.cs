@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using Microsoft.Practices.Prism;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.Logging;
@@ -10,10 +6,10 @@ using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.NinjectExtensions;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
-using NinjectPrismExt.Properties;
 using Ninject;
+using Prism.NinjectExtension.Properties;
 
-namespace NinjectPrismExt
+namespace Prism.NinjectExtension
 {
     public abstract class NinjectBootstrapper : Bootstrapper   
     {

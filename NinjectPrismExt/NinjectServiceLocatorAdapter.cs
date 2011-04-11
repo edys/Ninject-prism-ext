@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
 
-namespace Microsoft.Practices.Prism.NinjectExtensions
+namespace Prism.NinjectExtension
 {
     public class NinjectServiceLocatorAdapter : ServiceLocatorImplBase
     {
