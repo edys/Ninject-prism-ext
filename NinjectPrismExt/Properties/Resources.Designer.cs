@@ -79,6 +79,15 @@ namespace NinjectPrismExt.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configuring the Ninject kernel..
+        /// </summary>
+        internal static string ConfiguringKernel {
+            get {
+                return ResourceManager.GetString("ConfiguringKernel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuring module catalog..
         /// </summary>
         internal static string ConfiguringModuleCatalog {
@@ -106,11 +115,11 @@ namespace NinjectPrismExt.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configuring the Unity container..
+        ///   Looks up a localized string similar to Creating Ninject kernel..
         /// </summary>
-        internal static string ConfiguringUnityContainer {
+        internal static string CreatingKernel {
             get {
-                return ResourceManager.GetString("ConfiguringUnityContainer", resourceCulture);
+                return ResourceManager.GetString("CreatingKernel", resourceCulture);
             }
         }
         
@@ -129,15 +138,6 @@ namespace NinjectPrismExt.Properties {
         internal static string CreatingShell {
             get {
                 return ResourceManager.GetString("CreatingShell", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating Unity container..
-        /// </summary>
-        internal static string CreatingUnityContainer {
-            get {
-                return ResourceManager.GetString("CreatingUnityContainer", resourceCulture);
             }
         }
         
@@ -178,6 +178,15 @@ namespace NinjectPrismExt.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The IKernel is required and cannot be null..
+        /// </summary>
+        internal static string NullKernelException {
+            get {
+                return ResourceManager.GetString("NullKernelException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ILoggerFacade is required and cannot be null..
         /// </summary>
         internal static string NullLoggerFacadeException {
@@ -192,15 +201,6 @@ namespace NinjectPrismExt.Properties {
         internal static string NullModuleCatalogException {
             get {
                 return ResourceManager.GetString("NullModuleCatalogException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The IUnityContainer is required and cannot be null..
-        /// </summary>
-        internal static string NullUnityContainerException {
-            get {
-                return ResourceManager.GetString("NullUnityContainerException", resourceCulture);
             }
         }
         

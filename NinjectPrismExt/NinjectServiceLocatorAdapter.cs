@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Practices.ServiceLocation;
-using NinjectPrismExt;
+using Ninject;
 
 namespace Microsoft.Practices.Prism.NinjectExtensions
 {
     public class NinjectServiceLocatorAdapter : ServiceLocatorImplBase
     {
-        private readonly INinjectContainer _container;
+        private readonly  IKernel _kernel;
 
-        public NinjectServiceLocatorAdapter(INinjectContainer container)
+        public NinjectServiceLocatorAdapter(IKernel kernel)
         {
-            _container = container;
+            _kernel = kernel;
         }
 
         protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
         {
-            return _container.ResolveAll(serviceType);
+            return _kernel.GetAll(serviceType);
         }
 
         protected override object DoGetInstance(Type serviceType, string key)
         {
-            return _container.Resolve(serviceType, key);
+            return _kernel.Get(serviceType);
         }
     }
 }

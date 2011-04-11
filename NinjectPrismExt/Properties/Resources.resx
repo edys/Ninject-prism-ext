@@ -123,6 +123,9 @@
   <data name="ConfiguringDefaultRegionBehaviors" xml:space="preserve">
     <value>Configuring default region behaviors.</value>
   </data>
+  <data name="ConfiguringKernel" xml:space="preserve">
+    <value>Configuring the Ninject kernel.</value>
+  </data>
   <data name="ConfiguringModuleCatalog" xml:space="preserve">
     <value>Configuring module catalog.</value>
   </data>
@@ -132,17 +135,14 @@
   <data name="ConfiguringServiceLocatorSingleton" xml:space="preserve">
     <value>Configuring ServiceLocator singleton.</value>
   </data>
-  <data name="ConfiguringUnityContainer" xml:space="preserve">
-    <value>Configuring the Unity container.</value>
+  <data name="CreatingKernel" xml:space="preserve">
+    <value>Creating Ninject kernel.</value>
   </data>
   <data name="CreatingModuleCatalog" xml:space="preserve">
     <value>Creating module catalog.</value>
   </data>
   <data name="CreatingShell" xml:space="preserve">
     <value>Creating the shell.</value>
-  </data>
-  <data name="CreatingUnityContainer" xml:space="preserve">
-    <value>Creating Unity container.</value>
   </data>
   <data name="InitializingModules" xml:space="preserve">
     <value>Initializing modules.</value>
@@ -156,14 +156,14 @@
   <data name="NotOverwrittenGetModuleEnumeratorException" xml:space="preserve">
     <value>The method 'GetModuleEnumerator' of the bootstrapper must be overwritten in order to use the default module initialization logic.</value>
   </data>
+  <data name="NullKernelException" xml:space="preserve">
+    <value>The IKernel is required and cannot be null.</value>
+  </data>
   <data name="NullLoggerFacadeException" xml:space="preserve">
     <value>The ILoggerFacade is required and cannot be null.</value>
   </data>
   <data name="NullModuleCatalogException" xml:space="preserve">
     <value>The IModuleCatalog is required and cannot be null in order to initialize the modules.</value>
-  </data>
-  <data name="NullUnityContainerException" xml:space="preserve">
-    <value>The IUnityContainer is required and cannot be null.</value>
   </data>
   <data name="RegisteringFrameworkExceptionTypes" xml:space="preserve">
     <value>Registering Framework Exception Types.</value>

@@ -11,6 +11,7 @@ using Microsoft.Practices.Prism.NinjectExtensions;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
 using NinjectPrismExt.Properties;
+using Ninject;
 
 namespace NinjectPrismExt
 {
@@ -20,11 +21,11 @@ namespace NinjectPrismExt
         private bool useDefaultConfiguration = true;
 
         /// <summary>
-        /// Gets the default <see cref="IUnityContainer"/> for the application.
+        /// Gets the default <see cref="Ninject.IKernel"/> for the application.
         /// </summary>
-        /// <value>The default <see cref="IUnityContainer"/> instance.</value>
+        /// <value>The default <see cref="Ninject.IKernel"/> instance.</value>
         [CLSCompliant(false)]
-        public INinjectContainer Container { get; protected set; }
+        public IKernel Kernel { get; protected set; }
 
 
         /// <summary>
@@ -53,14 +54,14 @@ namespace NinjectPrismExt
             this.Logger.Log(Resources.ConfiguringModuleCatalog, Category.Debug, Priority.Low);
             this.ConfigureModuleCatalog();
 
-            this.Logger.Log(Resources.CreatingUnityContainer, Category.Debug, Priority.Low);
-            this.Container = this.CreateContainer();
-            if (this.Container == null)
+            this.Logger.Log(Resources.CreatingKernel, Category.Debug, Priority.Low);
+            this.Kernel = this.CreateKernel();
+            if (this.Kernel == null)
             {
-                throw new InvalidOperationException(Resources.NullUnityContainerException);
+                throw new InvalidOperationException(Resources.NullKernelException);
             }
 
-            this.Logger.Log(Resources.ConfiguringUnityContainer, Category.Debug, Priority.Low);
+            this.Logger.Log(Resources.ConfiguringKernel, Category.Debug, Priority.Low);
             this.ConfigureContainer();
 
             this.Logger.Log(Resources.ConfiguringServiceLocatorSingleton, Category.Debug, Priority.Low);
@@ -80,7 +81,7 @@ namespace NinjectPrismExt
             if (this.Shell != null)
             {
                 this.Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
-                RegionManager.SetRegionManager(this.Shell, this.Container.Resolve<IRegionManager>());
+                RegionManager.SetRegionManager(this.Shell, this.Kernel.Get<IRegionManager>());
 
                 this.Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 RegionManager.UpdateRegions();
@@ -89,7 +90,7 @@ namespace NinjectPrismExt
                 this.InitializeShell();
             }
 
-            if (this.Container.IsRegistered<IModuleManager>())
+            if (this.Kernel.IsRegistered<IModuleManager>())
             {
                 this.Logger.Log(Resources.InitializingModules, Category.Debug, Priority.Low);
                 this.InitializeModules();
@@ -103,11 +104,11 @@ namespace NinjectPrismExt
         /// </summary>
         protected override void ConfigureServiceLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => this.Container.Resolve<IServiceLocator>());
+            ServiceLocator.SetLocatorProvider(() => this.Kernel.Get<IServiceLocator>());
         }
 
         /// <summary>
-        /// Registers in the <see cref="INinjectContainer"/> the <see cref="Type"/> of the Exceptions
+        /// Registers in the <see cref="Ninject.IKernel"/> the <see cref="Type"/> of the Exceptions
         /// that are not considered root exceptions by the <see cref="ExceptionExtensions"/>.
         /// </summary>
         protected override void RegisterFrameworkExceptionTypes()
@@ -116,34 +117,33 @@ namespace NinjectPrismExt
 
             ExceptionExtensions.RegisterFrameworkExceptionType(
                 typeof(Ninject.ActivationException));
+
+            
         }
 
         /// <summary>
-        /// Configures the <see cref="INinjectContainer"/>. May be overwritten in a derived class to add specific
+        /// Configures the <see cref="Ninject.IKernel"/>. May be overwritten in a derived class to add specific
         /// type mappings required by the application.
         /// </summary>
         protected virtual void ConfigureContainer()
         {
-            
-
-            Container.RegisterInstance<ILoggerFacade>(Logger,Scopes.InSingletonScope);
-
-            this.Container.RegisterInstance(this.ModuleCatalog, Scopes.InSingletonScope);
+            Kernel.Bind <ILoggerFacade>().ToConstant(Logger).InSingletonScope();
+            Kernel.Bind<IModuleCatalog>().ToConstant(ModuleCatalog).InSingletonScope();
 
             if (useDefaultConfiguration)
             {
-                RegisterTypeIfMissing<IServiceLocator,NinjectServiceLocatorAdapter>(true);
-                RegisterTypeIfMissing<IModuleInitializer,ModuleInitializer>(true);
-                RegisterTypeIfMissing<IModuleManager,ModuleManager>(true);
-                RegisterTypeIfMissing<RegionAdapterMappings,RegionAdapterMappings>(true);
-                RegisterTypeIfMissing<IRegionManager,RegionManager>(true);
-                RegisterTypeIfMissing<IEventAggregator,EventAggregator>(true);
-                RegisterTypeIfMissing<IRegionViewRegistry,RegionViewRegistry>(true);
-                RegisterTypeIfMissing<IRegionBehaviorFactory,RegionBehaviorFactory>(true);
-                RegisterTypeIfMissing<IRegionNavigationJournalEntry,RegionNavigationJournalEntry>(false);
-                RegisterTypeIfMissing<IRegionNavigationJournal,RegionNavigationJournal>(false);
-                RegisterTypeIfMissing<IRegionNavigationService,RegionNavigationService>(false);
-                RegisterTypeIfMissing<IRegionNavigationContentLoader,RegionNavigationContentLoader>(true);
+                this.Kernel.RegisterTypeIfMissing<IServiceLocator, NinjectServiceLocatorAdapter>(true);
+                this.Kernel.RegisterTypeIfMissing<IModuleInitializer, ModuleInitializer>(true);
+                this.Kernel.RegisterTypeIfMissing<IModuleManager, ModuleManager>(true);
+                this.Kernel.RegisterTypeIfMissing<RegionAdapterMappings, RegionAdapterMappings>(true);
+                this.Kernel.RegisterTypeIfMissing<IRegionManager, RegionManager>(true);
+                this.Kernel.RegisterTypeIfMissing<IEventAggregator, EventAggregator>(true);
+                this.Kernel.RegisterTypeIfMissing<IRegionViewRegistry, RegionViewRegistry>(true);
+                this.Kernel.RegisterTypeIfMissing<IRegionBehaviorFactory, RegionBehaviorFactory>(true);
+                this.Kernel.RegisterTypeIfMissing<IRegionNavigationJournalEntry, RegionNavigationJournalEntry>(false);
+                this.Kernel.RegisterTypeIfMissing<IRegionNavigationJournal, RegionNavigationJournal>(false);
+                this.Kernel.RegisterTypeIfMissing<IRegionNavigationService, RegionNavigationService>(false);
+                this.Kernel.RegisterTypeIfMissing<IRegionNavigationContentLoader, RegionNavigationContentLoader>(true);
             }
         }
 
@@ -156,7 +156,7 @@ namespace NinjectPrismExt
 
             try
             {
-                manager = this.Container.Resolve<IModuleManager>();
+                manager = this.Kernel.Get<IModuleManager>();
             }
             catch (Ninject.ActivationException ex)
             {
@@ -172,42 +172,13 @@ namespace NinjectPrismExt
         }
 
         /// <summary>
-        /// Creates the <see cref="INinjectContainer"/> that will be used as the default container.
+        /// Creates the <see cref="Ninject.IKernel"/> that will be used as the default container.
         /// </summary>
-        /// <returns>A new instance of <see cref="INinjectContainer"/>.</returns>
+        /// <returns>A new instance of <see cref="Ninject.IKernel"/>.</returns>
         [CLSCompliant(false)]
-        protected virtual INinjectContainer CreateContainer()
+        protected virtual IKernel CreateKernel()
         {
-            return new NinjectContainer();
-        }
-
-        /// <summary>
-        /// Registers a type in the container only if that type was not already registered.
-        /// </summary>
-        /// <param name="fromType">The interface type to register.</param>
-        /// <param name="toType">The type implementing the interface.</param>
-        /// <param name="registerAsSingleton">Registers the type as a singleton.</param>
-        protected void RegisterTypeIfMissing<fromType, toType>(bool registerAsSingleton) where toType : fromType
-        {
-           
-            if (Container.IsRegistered<fromType>())
-            {
-                Logger.Log(
-                    String.Format(CultureInfo.CurrentCulture,
-                                  Resources.TypeMappingAlreadyRegistered,
-                                  typeof(fromType).Name), Category.Debug, Priority.Low);
-            }
-            else
-            {
-                if (registerAsSingleton)
-                {
-                    Container.RegisterType<fromType, toType>(Scopes.InSingletonScope);
-                }
-                else
-                {
-                    Container.RegisterType<fromType, toType>(Scopes.InTransientScope);
-                }
-            }
+            return new StandardKernel();
         }
     }
 }
