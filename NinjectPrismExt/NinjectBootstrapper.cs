@@ -3,7 +3,6 @@ using Microsoft.Practices.Prism;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.NinjectExtensions;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
@@ -20,7 +19,7 @@ namespace Prism.NinjectExtension
         /// Gets the default <see cref="Ninject.IKernel"/> for the application.
         /// </summary>
         /// <value>The default <see cref="Ninject.IKernel"/> instance.</value>
-        [CLSCompliant(false)]
+        
         public IKernel Kernel { get; protected set; }
 
 
@@ -171,7 +170,6 @@ namespace Prism.NinjectExtension
         /// Creates the <see cref="Ninject.IKernel"/> that will be used as the default container.
         /// </summary>
         /// <returns>A new instance of <see cref="Ninject.IKernel"/>.</returns>
-        [CLSCompliant(false)]
         protected virtual IKernel CreateKernel()
         {
             return new StandardKernel();

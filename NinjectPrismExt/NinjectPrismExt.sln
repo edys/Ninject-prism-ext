@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjectPrismExt", "NinjectPrismExt.csproj", "{4B937C8D-056F-4D77-966F-D5B1B44E7E3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension", "Prism.NinjectExtension.csproj", "{4B937C8D-056F-4D77-966F-D5B1B44E7E3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

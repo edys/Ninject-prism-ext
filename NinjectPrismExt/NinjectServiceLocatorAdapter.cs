@@ -21,7 +21,7 @@ namespace Prism.NinjectExtension
 
         protected override object DoGetInstance(Type serviceType, string key)
         {
-            return _kernel.Get(serviceType);
+            return _kernel.Get(serviceType, key);
         }
     }
 }
