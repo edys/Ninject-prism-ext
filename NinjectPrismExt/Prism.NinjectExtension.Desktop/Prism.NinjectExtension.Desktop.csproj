@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Prism.NinjectExtension</RootNamespace>
-    <AssemblyName>Prism.NinjectExtension</AssemblyName>
+    <AssemblyName>Prism.NinjectExtension.Desktop</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
