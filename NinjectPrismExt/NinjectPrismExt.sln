@@ -5,6 +5,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Silv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Desktop", "Prism.NinjectExtension.Desktop\Prism.NinjectExtension.Desktop.csproj", "{F003BC46-7CD7-40A9-93EA-C2E84AA0BC97}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{85C6F04F-A7FF-4B00-8865-D746CDED7A43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Desktop.Tests", "Prism.NinjectExtension.Desktop.Tests\Prism.NinjectExtension.Desktop.Tests.csproj", "{BFA59FB0-43FD-4776-9BB2-3E9FC836A56D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Silverlight.Tests", "Prism.NinjectExtension.Silverlight.Tests\Prism.NinjectExtension.Silverlight.Tests.csproj", "{1562DF71-35B4-4AE6-A3EC-AEB2051F304A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +25,20 @@ Global
 		{F003BC46-7CD7-40A9-93EA-C2E84AA0BC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F003BC46-7CD7-40A9-93EA-C2E84AA0BC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F003BC46-7CD7-40A9-93EA-C2E84AA0BC97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFA59FB0-43FD-4776-9BB2-3E9FC836A56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFA59FB0-43FD-4776-9BB2-3E9FC836A56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFA59FB0-43FD-4776-9BB2-3E9FC836A56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFA59FB0-43FD-4776-9BB2-3E9FC836A56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1562DF71-35B4-4AE6-A3EC-AEB2051F304A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1562DF71-35B4-4AE6-A3EC-AEB2051F304A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1562DF71-35B4-4AE6-A3EC-AEB2051F304A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1562DF71-35B4-4AE6-A3EC-AEB2051F304A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFA59FB0-43FD-4776-9BB2-3E9FC836A56D} = {85C6F04F-A7FF-4B00-8865-D746CDED7A43}
+		{1562DF71-35B4-4AE6-A3EC-AEB2051F304A} = {85C6F04F-A7FF-4B00-8865-D746CDED7A43}
 	EndGlobalSection
 EndGlobal
