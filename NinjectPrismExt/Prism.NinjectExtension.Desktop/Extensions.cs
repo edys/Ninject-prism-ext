@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Microsoft.Practices.Prism.Logging;
 using Ninject;
 using Ninject.Parameters;
@@ -76,5 +77,53 @@ namespace Prism.NinjectExtension
             }
         }
 
+
+        /// <summary>
+        /// Resolve an instance of the requested type with the given name from the kernel.
+        /// </summary>
+        /// <typeparam name="T"><see cref="Type"/> of object to get from the container.</typeparam>
+        /// <param name="kernel">kernel to resolve from.</param>
+        /// <param name="name">Name of the object to retrieve.</param>
+        /// <param name="overrides">Any overrides for the resolve call.</param>
+        /// <returns>The retrieved object.</returns>
+        public static T Resolve<T>(this IKernel kernel, string name = null, params IParameter[] overrides)
+        {
+            return (T)kernel.Resolve(typeof(T), name, overrides);
+        }
+
+        /// <summary>
+        /// Resolve an instance of the default requested type from the kernel.
+        /// </summary>
+        /// <param name="kernel">kernel to resolve from.</param>
+        /// <param name="t"><see cref="Type"/> of object to get from the kernel.</param>
+        /// <param name="name">Name of the object to retrieve.</param>
+        /// <param name="overrides">Any overrides for the resolve call.</param>
+        /// <returns>The retrieved object.</returns>
+        public static object Resolve(this IKernel kernel, Type t, string name = null, params IParameter[] overrides)
+        {
+            return kernel.Get(t, name, overrides);
+        }
+
+
+        /// <summary>
+        /// Return instances of all registered types requested.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This method is useful if you've registered multiple types with the same
+        /// <see cref="Type"/> but different names.
+        /// </para>
+        /// <para>
+        /// Be aware that this method does NOT return an instance for the default (unnamed) registration.
+        /// </para>
+        /// </remarks>
+        /// <typeparam name="T">The type requested.</typeparam>
+        /// <param name="container">Container to resolve from.</param>
+        /// <param name="resolverOverrides">Any overrides for the resolve calls.</param>
+        /// <returns>Set of objects of type <typeparamref name="T"/>.</returns>
+        public static IEnumerable<T> ResolveAll<T>(this IKernel kernel, params IParameter[] resolverOverrides)
+        {
+            return kernel.GetAll(typeof (T), resolverOverrides).Cast<T>();
+        }
     }
 }
