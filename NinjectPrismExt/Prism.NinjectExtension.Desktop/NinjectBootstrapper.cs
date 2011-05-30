@@ -10,10 +10,13 @@ using Prism.NinjectExtension.Properties;
 
 namespace Prism.NinjectExtension
 {
+    /// <summary>
+    /// The bootstrapper - Sets up all required service for Prism and create the Ninject Kernel for use in the application  
+    /// </summary>
     public abstract class NinjectBootstrapper : Bootstrapper   
     {
       
-        private bool useDefaultConfiguration = true;
+        private bool _useDefaultConfiguration = true;
 
         /// <summary>
         /// Gets the default <see cref="Ninject.IKernel"/> for the application.
@@ -29,7 +32,7 @@ namespace Prism.NinjectExtension
         /// <param name="runWithDefaultConfiguration">If <see langword="true"/>, registers default Composite Application Library services in the container. This is the default behavior.</param>
         public override void Run(bool runWithDefaultConfiguration)
         {
-            this.useDefaultConfiguration = runWithDefaultConfiguration;
+            this._useDefaultConfiguration = runWithDefaultConfiguration;
 
             this.Logger = this.CreateLogger();
             if (this.Logger == null)
@@ -125,7 +128,7 @@ namespace Prism.NinjectExtension
             Kernel.Bind <ILoggerFacade>().ToConstant(Logger).InSingletonScope();
             Kernel.Bind<IModuleCatalog>().ToConstant(ModuleCatalog).InSingletonScope();
 
-            if (useDefaultConfiguration)
+            if (_useDefaultConfiguration)
             {
                 this.Kernel.RegisterTypeIfMissing<IServiceLocator, NinjectServiceLocatorAdapter>(true);
                 this.Kernel.RegisterTypeIfMissing<IModuleInitializer, ModuleInitializer>(true);
@@ -143,7 +146,7 @@ namespace Prism.NinjectExtension
         }
 
         /// <summary>
-        /// Initializes the modules. May be overwritten in a derived class to use a custom Modules Catalog
+        /// Initializes the modules. May be overwritten in a derived class to use a custom Modules catalogue
         /// </summary>
         protected override void InitializeModules()
         {
