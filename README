@@ -5,6 +5,10 @@ This extension is for use with the Microsoft.Practices.Prism library.
 The current version requires the following:
  - Microsoft.Practices.Prism 4.0
  - Ninject 2.2
+
+Supports:
+ - .NET 4
+ - Silverlight 4 
  
  To use:
  
@@ -13,4 +17,4 @@ The current version requires the following:
  3) replace IUnityContainer and CompositionContainer type registration with Ninject bindings
 
 
-I plan to update this soon for both silverlight and WP7 apps (if possible)  
+I plan to update this for WP7 apps (if possible)  
