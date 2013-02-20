@@ -3,8 +3,8 @@ Prism.NinjectExtension
 This extension is for use with the Microsoft.Practices.Prism library.
 
 The current version requires the following:
- - Microsoft.Practices.Prism 4.0
- - Ninject 2.2
+ - Microsoft.Practices.Prism 4.1
+ - Ninject 3.0
 
 Supports:
  - .NET 4
