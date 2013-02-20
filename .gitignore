@@ -1,4 +1,9 @@
 Bin
+Obj
 obj
-/NinjectPrismExt/Prism.NinjectExtension.Silverlight.StrongName/obj
-/NinjectPrismExt/Prism.NinjectExtension.Desktop.StrongName/obj
+bin
+*.dll
+*.pdb
+obj
+Bin
+obj
