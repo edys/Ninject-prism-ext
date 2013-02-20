@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Silverlight", "Prism.NinjectExtension.Silverlight\Prism.NinjectExtension.Silverlight.csproj", "{3B7A387E-900A-4F24-8436-6BA6239272F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Desktop", "Prism.NinjectExtension.Desktop\Prism.NinjectExtension.Desktop.csproj", "{F003BC46-7CD7-40A9-93EA-C2E84AA0BC97}"
@@ -10,6 +10,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Desktop.Tests", "Prism.NinjectExtension.Desktop.Tests\Prism.NinjectExtension.Desktop.Tests.csproj", "{BFA59FB0-43FD-4776-9BB2-3E9FC836A56D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NinjectExtension.Silverlight.Tests", "Prism.NinjectExtension.Silverlight.Tests\Prism.NinjectExtension.Silverlight.Tests.csproj", "{1562DF71-35B4-4AE6-A3EC-AEB2051F304A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CBAF21D5-7101-423D-9621-ADF445663BD5}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
