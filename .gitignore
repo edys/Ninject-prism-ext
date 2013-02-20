@@ -1,0 +1,15 @@
+Bin
+Obj
+obj
+bin
+*.dll
+*.pdb
+obj
+Bin
+obj
+packages
+
+packages
+
+*.suo
+NinjectPrismExt/NinjectPrismExt.v11.suo
